@@ -22,6 +22,14 @@ const HotelModel = db.define(
       type: DataTypes.STRING,
       allowNull: false
     },
+    kota: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    alamat: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     image1: {
       type: DataTypes.STRING,
       allowNull: false

@@ -1,42 +1,50 @@
-import HotelModel from '../models/HotelModel.js';
-import TypebedModel from '../models/TypebedModel.js';
+import HotelModel from "../models/HotelModel.js";
+import TypebedModel from "../models/TypebedModel.js";
 
 export const createTypeBed = async (req, res) => {
   try {
-    const {name, harga} = req.body;
-    const hotel = await HotelModel.findOne ({
+    const { name, harga } = req.body;
+    const hotel = await HotelModel.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
-    await TypebedModel.create ({
+    await TypebedModel.create({
       name: name,
       harga: harga,
-      hotelId: hotel.id,
+      hotelId: hotel.id
     });
-    res.status (201).json ({msg: 'Anda berhasil menambah type bed!'});
+    res.status(201).json({ msg: "Anda berhasil menambah type bed!" });
   } catch (error) {
-    res.status (500).json ({msg: error.message});
+    res.status(500).json({ msg: error.message });
   }
 };
 export const getTypeBedByHotelId = async (req, res) => {
   try {
-    const response = await TypebedModel.findAll (
+    const response = await TypebedModel.findAll(
       {
         where: {
-          hotelId: req.params.id,
-        },
+          hotelId: req.params.id
+        }
       },
       {
         include: [
           {
-            model: HotelModel,
-          },
-        ],
+            model: HotelModel
+          }
+        ]
       }
     );
-    res.status (200).json (response);
+    res.status(200).json(response);
   } catch (error) {
-    res.status (500).json ({msg: error.message});
+    res.status(500).json({ msg: error.message });
+  }
+};
+export const getAllType = async (req, res) => {
+  try {
+    const response = await TypebedModel.findAll();
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
   }
 };
