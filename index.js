@@ -31,6 +31,6 @@ app.use (TestimoniRoute);
 app.use (BokingRoute);
 app.use (TypebedRoute);
 
-app.listen (process.env.APP_PORT, () => {
-  console.log (`Server is running in port ${process.env.APP_PORT}...`);
+app.listen (3001, () => {
+  console.log (`Server is running in port 3001...`);
 });
