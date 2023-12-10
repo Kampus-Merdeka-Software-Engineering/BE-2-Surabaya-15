@@ -13,7 +13,7 @@ const app = express ();
 
 // migrasi
 
-//(async () => {
+// (async () => {
 //   await db.sync ();
 // }) ();
 
